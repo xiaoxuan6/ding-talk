@@ -1,3 +1,5 @@
+![Dingtalk_20220518174235](https://user-images.githubusercontent.com/32762220/169010157-188f2101-b747-4c6b-a333-00b718777e4a.jpg)
+
 # DingTalk
 
 钉钉自定义机器人 Golang API.
@@ -25,7 +27,7 @@
 <summary><b>text 类型</b></summary>
 
 ```
-    robot := talk.NewRobot(webhook)
+    robot := talk.NewRobot(accessToken)
 
     content := "我就是我, @XXX 是不一样的烟火"
     atMobiles := []string{}
@@ -44,7 +46,7 @@
 <summary><b>link 类型</b></summary>
 
 ```
-    robot := talk.NewRobot(webhook)
+    robot := talk.NewRobot(accessToken)
 
     text := "这个即将发布的新版本，创始人xx称它为红树林。而在此之前，每当面临重大升级，产品经理们都会取一个应景的代号，这一次，为什么是红树林"
     title := "时代的火车向前开"
@@ -63,7 +65,7 @@
 <summary><b>markdown 类型</b></summary>
 
 ```
-    robot := talk.NewRobot(webhook)
+    robot := talk.NewRobot(accessToken)
 
     title := "杭州天气"
     text := "#### 杭州天气  \n > 9度，@1825718XXXX 西北风1级，空气良89，相对温度73%\n\n > ![screenshot](http://i01.lw.aliimg.com/media/lALPBbCc1ZhJGIvNAkzNBLA_1200_588.png)\n  > ###### 10点20分发布 [天气](http://www.thinkpage.cn/) "
@@ -83,7 +85,7 @@
 <summary><b>整体跳转ActionCard类型</b></summary>
 
 ```
-    robot := talk.NewRobot(webhook)
+    robot := talk.NewRobot(accessToken)
 
     title := "乔布斯 20 年前想打造一间苹果咖啡厅，而它正是 Apple Store 的前身"
     text := "![screenshot](@lADOpwk3K80C0M0FoA) \n #### 乔布斯 20 年前想打造的苹果咖啡厅 \n\n Apple Store 的设计正从原来满满的科技感走向生活化，而其生活化的走向其实可以追溯到 20 年前苹果一个建立咖啡馆的计划"
@@ -103,7 +105,7 @@
 <summary><b>独立跳转ActionCard类型</b></summary>
 
 ```
-    robot := talk.NewRobot(webhook)
+    robot := talk.NewRobot(accessToken)
 
     title := "我 20 年前想打造一间苹果咖啡厅，而它正是 Apple Store 的前身"
     text := "![screenshot](https://img.alicdn.com/tfs/TB1NwmBEL9TBuNjy1zbXXXpepXa-2400-1218.png) \n\n #### 乔布斯 20 年前想打造的苹果咖啡厅 \n\n Apple Store 的设计正从原来满满的科技感走向生活化，而其生活化的走向其实可以追溯到 20 年前苹果一个建立咖啡馆的计划"
@@ -133,7 +135,7 @@
 <summary><b>FeedCard类型</b></summary>
 
 ```
-    robot := talk.NewRobot(webhook)
+    robot := talk.NewRobot(accessToken)
     
     links := make([]talk.Links, 0)
     link1 := talk.Links{
@@ -159,7 +161,7 @@
 
 # 安全设置为加密模式
 
-    robot := talk.NewRobot(webhook)
+    robot := talk.NewRobot(accessToken)
 
     content := "我就是我, @XXX 是不一样的烟火"
     atMobiles := []string{}
