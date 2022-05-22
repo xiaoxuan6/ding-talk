@@ -23,20 +23,20 @@ const (
 )
 
 // Robot represents a dingtalk custom robot that can send messages to groups.
-type robot struct {
+type Robot struct {
 	accessToken string
 	secret      string
 }
 
 // NewRobot returns a roboter that can send messages.
-func NewRobot(accessToken string) *robot {
-	return &robot{
+func NewRobot(accessToken string) *Robot {
+	return &Robot{
 		accessToken: accessToken,
 	}
 }
 
 // SetSecret set the secret to add additional signature when send request
-func (r *robot) SetSecret(secret string) *robot {
+func (r *Robot) SetSecret(secret string) *Robot {
 	r.secret = secret
 	return r
 }
@@ -58,7 +58,7 @@ type at struct {
 }
 
 // SendText send a text type message.
-func (r *robot) SendText(content string, atMobiles, atUserIds []string, isAtAll bool) error {
+func (r *Robot) SendText(content string, atMobiles, atUserIds []string, isAtAll bool) error {
 	return r.send(&textMessage{
 		Msgtype: msgTypeText,
 		Text: text{
@@ -85,7 +85,7 @@ type link struct {
 }
 
 // SendLink send a link type message.
-func (r *robot) SendLink(text, title, picUrl, messageUrl string) error {
+func (r *Robot) SendLink(text, title, picUrl, messageUrl string) error {
 	return r.send(&linkMessage{
 		Msgtype: msgTypeLink,
 		Link: link{
@@ -109,7 +109,7 @@ type markdown struct {
 }
 
 // SendMarkdown send a markdown type message.
-func (r *robot) SendMarkdown(title, text string, atMobiles, atUserIds []string, isAtAll bool) error {
+func (r *Robot) SendMarkdown(title, text string, atMobiles, atUserIds []string, isAtAll bool) error {
 	return r.send(&markdownMessage{
 		Msgtype: msgTypeMarkdown,
 		Markdown: markdown{
@@ -139,7 +139,7 @@ type actionCard struct {
 
 // 整体跳转ActionCard类型
 // SendActionCard send a action card type message.
-func (r *robot) SendActionCard(title, text, singleTitle, singleURL, btnOrientation string) error {
+func (r *Robot) SendActionCard(title, text, singleTitle, singleURL, btnOrientation string) error {
 	return r.send(&actionCardMessage{
 		Msgtype: msgTypeActionCard,
 		ActionCard: actionCard{
@@ -171,7 +171,7 @@ type Btns struct {
 
 // 独立跳转ActionCard类型
 // SendActionCard2 send a action card type message.
-func (r *robot) SendActionCard2(title, text, btnOrientation string, btns []Btns) error {
+func (r *Robot) SendActionCard2(title, text, btnOrientation string, btns []Btns) error {
 	return r.send(&actionCard2Message{
 		Msgtype: msgTypeActionCard,
 		ActionCard2: actionCard2{
@@ -199,7 +199,7 @@ type Links struct {
 }
 
 // SendFeedCard send a feed card type message.
-func (r *robot) SendFeedCard(links []Links) error {
+func (r *Robot) SendFeedCard(links []Links) error {
 	return r.send(&feedCardMessage{
 		Msgtype: msgTypeFeedCard,
 		FeedCard: feedCard{
@@ -208,7 +208,7 @@ func (r *robot) SendFeedCard(links []Links) error {
 	})
 }
 
-func (r *robot) send(msg interface{}) error {
+func (r *Robot) send(msg interface{}) error {
 
 	body, err := json.Marshal(msg)
 	if err != nil {
