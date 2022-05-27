@@ -4,11 +4,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	talk "github.com/xiaoxuan6/ding-talk"
 	"testing"
-	"time"
 )
 
 func init() {
-	talk.Init(3, 1*time.Minute)
+	talk.Init()
 }
 
 func TestText(t *testing.T) {
