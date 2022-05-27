@@ -33,7 +33,7 @@
     atMobiles := []string{}
     atUserIds := []string{}
     isAtAll := false
-    
+
     err := robot.SendText(content, atMobiles, atUserIds, isAtAll)
     if err != nil {
         log.Fatal(err)
@@ -52,7 +52,7 @@
     title := "时代的火车向前开"
     picUrl := ""
     messageUrl := "https://www.dingtalk.com/s?__biz=MzA4NjMwMTA2Ng==&mid=2650316842&idx=1&sn=60da3ea2b29f1dcc43a7c8e4a7c97a16&scene=2&srcid=09189AnRJEdIiWVaKltFzNTw&from=timeline&isappinstalled=0&key=&ascene=2&uin=&devicetype=android-23&version=26031933&nettype=WIFI"
-    
+
     err := robot.SendLink(text, title, picUrl, messageUrl)
     if err != nil {
         log.Fatal(err)
@@ -72,7 +72,7 @@
     atMobiles := []string{"1825718XXXX"}
     atUserIds := []string{}
     isAtAll := false
-	
+
     err := robot.SendMarkdown(title, text, atMobiles, atUserIds, isAtAll)
     if err != nil {
         log.Fatal(err)
@@ -92,7 +92,7 @@
     singleTitle := "阅读全文"
     singleURL := "https://www.dingtalk.com/"
     btnOrientation := "0" // 0：按钮竖直排列, 1：按钮横向排列
-	
+
     err := robot.SendActionCard(title, text, singleTitle, singleURL, btnOrientation)
     if err != nil {
         log.Fatal(err)
@@ -113,16 +113,16 @@
 
     btns := make([]talk.Btns, 0)
     btn1 := talk.Btns{
-        Title: "内容不错",		
+        Title: "内容不错",
         ActionURL: "https://www.dingtalk.com/",
     }
     btns = append(btns, btn1)
     btn2 := talk.Btns{
-        Title: "不感兴趣",		
+        Title: "不感兴趣",
         ActionURL: "https://www.dingtalk.com/",
     }
     btns = append(btns, btn2)
-	
+
     err := robot.SendActionCard2(title, text, btnOrientation, btns)
     if err != nil {
         log.Fatal(err)
@@ -136,7 +136,7 @@
 
 ```
     robot := talk.NewRobot(accessToken)
-    
+
     links := make([]talk.Links, 0)
     link1 := talk.Links{
     	Title: "时代的火车向前开1",
@@ -150,7 +150,7 @@
     	PicURL: "https://img.alicdn.com/tfs/TB1NwmBEL9TBuNjy1zbXXXpepXa-2400-1218.png",
     }
     links = append(links, link2)
-	
+
     err := robot.SendFeedCard(links)
     if err != nil {
         log.Fatal(err)
@@ -169,3 +169,8 @@
     isAtAll := false
 
     robot.SetSecret("xxx").SendText(content, atMobiles, atUserIds, isAtAll)
+
+# 添加限流设置
+在项目入口初始化
+
+    talk.Init()

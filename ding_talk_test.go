@@ -9,8 +9,9 @@ import (
 var secret = "SEC5cf5fef599c86f7fab78ef25c0b6b1b6956a195e43170f69af9b504bbd7fc8c7"
 var accessToken = "969f329a4faa0644baa590eb8c284e874d6c9ad6efdc24e381d944f56d07392d"
 
+var robot = talk.NewRobot(accessToken)
+
 func TestSendText(t *testing.T) {
-	robot := talk.NewRobot(accessToken)
 
 	content := "我就是我, golang 是不一样的烟火"
 
@@ -20,7 +21,6 @@ func TestSendText(t *testing.T) {
 }
 
 func TestSendLink(t *testing.T) {
-	robot := talk.NewRobot(accessToken)
 
 	text := "golang 这个即将发布的新版本，创始人xx称它为红树林。而在此之前，每当面临重大升级，产品经理们都会取一个应景的代号，这一次，为什么是红树林"
 	title := "时代的火车向前开"
@@ -33,7 +33,6 @@ func TestSendLink(t *testing.T) {
 }
 
 func TestSendMarkdown(t *testing.T) {
-	robot := talk.NewRobot(accessToken)
 
 	title := "杭州天气"
 	text := "#### 杭州天气  \n > 9度，@1825718XXXX 西北风1级，空气良89，相对温度73%\n\n > ![screenshot](http://i01.lw.aliimg.com/media/lALPBbCc1ZhJGIvNAkzNBLA_1200_588.png)\n  > ###### 10点20分发布 [天气](http://www.thinkpage.cn/) "
@@ -46,7 +45,6 @@ func TestSendMarkdown(t *testing.T) {
 }
 
 func TestSendActionCard(t *testing.T) {
-	robot := talk.NewRobot(accessToken)
 
 	title := "乔布斯 20 年前想打造一间苹果咖啡厅，而它正是 Apple Store 的前身"
 	text := "![screenshot](@lADOpwk3K80C0M0FoA) \n #### 乔布斯 20 年前想打造的苹果咖啡厅 \n\n Apple Store 的设计正从原来满满的科技感走向生活化，而其生活化的走向其实可以追溯到 20 年前苹果一个建立咖啡馆的计划"
@@ -60,7 +58,6 @@ func TestSendActionCard(t *testing.T) {
 }
 
 func TestSendActionCard2(t *testing.T) {
-	robot := talk.NewRobot(accessToken)
 
 	title := "我 20 年前想打造一间苹果咖啡厅，而它正是 Apple Store 的前身"
 	text := "![screenshot](https://img.alicdn.com/tfs/TB1NwmBEL9TBuNjy1zbXXXpepXa-2400-1218.png) \n\n #### 乔布斯 20 年前想打造的苹果咖啡厅 \n\n Apple Store 的设计正从原来满满的科技感走向生活化，而其生活化的走向其实可以追溯到 20 年前苹果一个建立咖啡馆的计划"
@@ -84,7 +81,6 @@ func TestSendActionCard2(t *testing.T) {
 }
 
 func TestSendFeedCard(t *testing.T) {
-	robot := talk.NewRobot(accessToken)
 
 	links := make([]talk.Links, 0)
 	link1 := talk.Links{
