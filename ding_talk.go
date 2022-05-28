@@ -128,11 +128,11 @@ func (r *Robot) send(msg interface{}) error {
 
 	val, ok := limit.Load(LimitName)
 	if ok {
-		limitName := val.(*LimitRate)
-		if ok = limitName.Allow(); ok {
+		LimitRate := val.(*LimitRate)
+		if ok = LimitRate.Allow(); ok {
 			err := send(r, msg)
 			if err != nil {
-				limitName.Reduce()
+				LimitRate.Reduce()
 			}
 			return err
 		}
